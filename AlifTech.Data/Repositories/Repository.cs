@@ -17,6 +17,9 @@ namespace AlifTech.Data.Repositories
             dbSet = this.dbContext.Set<TSource>();
         }
 
+        /// <summary>
+        /// Add tsource.
+        /// </summary>
         public async Task<TSource> CreateAsync(TSource source)
         {
             var result = await dbSet.AddAsync(source);
@@ -26,13 +29,22 @@ namespace AlifTech.Data.Repositories
             return result.Entity;
         }
 
-        public async Task DeleteAsync(TSource source)
+        /// <summary>
+        /// Delete tsource.
+        /// </summary>
+        public async Task DeleteAsync(Expression<Func<TSource, bool>> expression)
         {
-            dbSet.Remove(source);
+            var result = await dbSet.FirstOrDefaultAsync(expression);
+
+            if (result is not null)
+                dbSet.Remove(result);
 
             await dbContext.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Get all tsource.
+        /// </summary>
         public async Task<TSource[]> GetAllAsync(int pageIndex, int pageSize, string[]? includes = null)
         {
             IQueryable<TSource> pagedResult = dbSet.Paginate(pageIndex, pageSize);
@@ -44,11 +56,17 @@ namespace AlifTech.Data.Repositories
             return await pagedResult.ToArrayAsync();
         }
 
+        /// <summary>
+        /// Get tsource by id.
+        /// </summary>
         public async Task<TSource> GetByIdAsync(Expression<Func<TSource, bool>> expression)
         {
             return await dbSet.FirstOrDefaultAsync(expression);
         }
 
+        /// <summary>
+        /// Update tsource.
+        /// </summary>
         public async Task<TSource> UpdateAsync(TSource source)
         {
             TSource result = dbSet.Update(source).Entity;

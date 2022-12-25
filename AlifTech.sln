@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlifTech", "AlifTech\AlifTech.csproj", "{C2778F88-357F-48BD-8D5D-FC841A2B6B02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTech.Api", "AlifTech\AlifTech.Api.csproj", "{C2778F88-357F-48BD-8D5D-FC841A2B6B02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlifTech.Domain", "AlifTech.Domain\AlifTech.Domain.csproj", "{ED6EA722-30A5-4ECC-8F71-06B1C41BF172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTech.Domain", "AlifTech.Domain\AlifTech.Domain.csproj", "{ED6EA722-30A5-4ECC-8F71-06B1C41BF172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlifTech.Data", "AlifTech.Data\AlifTech.Data.csproj", "{0EBE57EB-2160-4FCB-BC39-A36D213E5CB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTech.Data", "AlifTech.Data\AlifTech.Data.csproj", "{0EBE57EB-2160-4FCB-BC39-A36D213E5CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlifTech.Service", "AlifTech.Service\AlifTech.Service.csproj", "{C1B17815-7405-41CD-B043-2E0C07E29535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTech.Service", "AlifTech.Service\AlifTech.Service.csproj", "{C1B17815-7405-41CD-B043-2E0C07E29535}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

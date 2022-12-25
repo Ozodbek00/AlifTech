@@ -17,7 +17,7 @@ namespace AlifTech.Data.IRepositories
         /// <summary>
         /// Delete tsource by id.
         /// </summary>
-        Task DeleteAsync(TSource source);
+        Task DeleteAsync(Expression<Func<TSource, bool>> expression);
 
         /// <summary>
         /// Get tsource by id.
