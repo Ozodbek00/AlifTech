@@ -22,7 +22,7 @@ namespace AlifTech.Data.IRepositories
         /// <summary>
         /// Get tsource by id.
         /// </summary>
-        Task<TSource> GetByIdAsync(Expression<Func<TSource, bool>> expression);
+        Task<TSource> GetAsync(Expression<Func<TSource, bool>> expression);
 
         /// <summary>
         /// Get all tsources from db + with pagination.

@@ -59,7 +59,7 @@ namespace AlifTech.Data.Repositories
         /// <summary>
         /// Get tsource by id.
         /// </summary>
-        public async Task<TSource> GetByIdAsync(Expression<Func<TSource, bool>> expression)
+        public async Task<TSource> GetAsync(Expression<Func<TSource, bool>> expression)
         {
             return await dbSet.FirstOrDefaultAsync(expression);
         }

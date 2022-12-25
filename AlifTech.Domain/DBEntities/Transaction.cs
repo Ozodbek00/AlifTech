@@ -1,4 +1,5 @@
 ﻿using AlifTech.Domain.Commons;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AlifTech.Domain.DBEntities
@@ -9,6 +10,12 @@ namespace AlifTech.Domain.DBEntities
         /// Gets && sets Amount of a Transaction.
         /// </summary>
         public double Amount { get; set; }
+
+        /// <summary>
+        /// Gets && sets From address of money coming from.
+        /// </summary>
+        [MaxLength(100)]
+        public string? From { get; set; }
 
         /// <summary>
         /// Gets && sets Id of a Wallet money coming from.

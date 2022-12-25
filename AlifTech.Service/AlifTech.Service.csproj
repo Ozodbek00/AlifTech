@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlifTech.Data\AlifTech.Data.csproj" />
+    <ProjectReference Include="..\AlifTech.Domain\AlifTech.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
