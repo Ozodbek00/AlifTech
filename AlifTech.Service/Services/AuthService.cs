@@ -31,7 +31,7 @@ namespace AlifTech.Service.Services
                 x.Login == login && x.Password == password.HashPassword());
 
             if (user is null)
-                throw new EWalletException(400, "Login or password is incorrect");
+                throw new EWalletException(400, "Login or password is incorrect!");
 
 
             // Else we generate JSON Web Token

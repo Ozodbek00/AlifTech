@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Linq;
+using System.Linq.Expressions;
 
 namespace AlifTech.Data.IRepositories
 {
@@ -25,8 +26,8 @@ namespace AlifTech.Data.IRepositories
         Task<TSource> GetAsync(Expression<Func<TSource, bool>> expression);
 
         /// <summary>
-        /// Get all tsources from db + with pagination.
+        /// Get all tsources from db.
         /// </summary>
-        Task<TSource[]> GetAllAsync(int pageIndex, int pageSize, string[]? include = null);
+        IQueryable<TSource> GetAll(string[]? include = null);
     }
 }

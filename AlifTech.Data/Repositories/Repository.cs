@@ -45,15 +45,15 @@ namespace AlifTech.Data.Repositories
         /// <summary>
         /// Get all tsource.
         /// </summary>
-        public async Task<TSource[]> GetAllAsync(int pageIndex, int pageSize, string[]? includes = null)
+        public IQueryable<TSource> GetAll(string[]? includes = null)
         {
-            IQueryable<TSource> pagedResult = dbSet.Paginate(pageIndex, pageSize);
+            IQueryable<TSource> pagedResult = dbSet;
 
             if (includes is not null)
                 foreach (var include in includes)
                     pagedResult = pagedResult.Include(include);
 
-            return await pagedResult.ToArrayAsync();
+            return pagedResult;
         }
 
         /// <summary>

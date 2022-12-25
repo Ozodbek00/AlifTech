@@ -1,5 +1,4 @@
-﻿using AlifTech.Domain.DBEntities;
-using AlifTech.Service.DTOs.UserDTOs;
+﻿using AlifTech.Service.DTOs.UserDTOs;
 
 namespace AlifTech.Service.Interfaces
 {
@@ -8,12 +7,12 @@ namespace AlifTech.Service.Interfaces
         /// <summary>
         /// Add dto to database.
         /// </summary>
-        Task<User> AddAsync(UserForCreationDto dto);
+        Task<UserViewDto> AddAsync(UserForCreationDto dto);
 
         /// <summary>
         /// Update User in database.
         /// </summary>
-        Task<User> UpdateAsync(long id, UserForCreationDto dto);
+        Task<UserViewDto> UpdateAsync(long id, UserForCreationDto dto);
 
         /// <summary>
         /// Delete User in database.
@@ -28,6 +27,6 @@ namespace AlifTech.Service.Interfaces
         /// <summary>
         /// Get all Users with pagination.
         /// </summary>
-        Task<IEnumerable<User>> GetAllAsync(int pageIndex, int pageSize);
+        Task<UserViewDto[]> GetAllAsync(int pageIndex, int pageSize);
     }
 }
