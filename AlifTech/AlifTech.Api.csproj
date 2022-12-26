@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AlifTech.Data\AlifTech.Data.csproj" />
     <ProjectReference Include="..\AlifTech.Service\AlifTech.Service.csproj" />
   </ItemGroup>

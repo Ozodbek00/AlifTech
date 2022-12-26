@@ -19,8 +19,9 @@ namespace AlifTech.Api.Extensions
             services.AddScoped<IRepository<Transaction>, Repository<Transaction>>();
 
             // add services.
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ITransactionService, TransactionService>();
         }
 
         public static void AddJwtService(this IServiceCollection services, IConfiguration configuration)

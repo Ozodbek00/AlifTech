@@ -114,7 +114,7 @@ namespace AlifTech.Service.Services
         /// <summary>
         /// Get all transactions.
         /// </summary>
-        public async Task<IEnumerable<TransactionViewDto>> GetAllAsync(int pageIndex, int pageSize)
+        public async Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize)
         {
             var transactions = repository.GetAll(include: 
                 new[] { "ToWallet.User", "FromWallet.User" })
@@ -136,7 +136,7 @@ namespace AlifTech.Service.Services
                 result.Add(viewDto);
             }
 
-            return result;
+            return result.ToArray();
         }
     }
 }

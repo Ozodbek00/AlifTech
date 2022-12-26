@@ -17,6 +17,6 @@ namespace AlifTech.Service.Interfaces
         /// <summary>
         /// Gets All Transactions.
         /// </summary>
-        Task<IEnumerable<TransactionViewDto>> GetAllAsync(int pageIndex, int pageSize);
+        Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize);
     }
 }

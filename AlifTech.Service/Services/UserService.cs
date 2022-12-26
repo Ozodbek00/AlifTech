@@ -13,11 +13,15 @@ namespace AlifTech.Service.Services
     public sealed class UserService : IUserService
     {
         private readonly IRepository<User> repository;
+        private readonly IRepository<Wallet> walletRepo;
         private readonly IMapper mapper;
 
-        public UserService(IRepository<User> repository, IMapper mapper)
+        public UserService(IRepository<User> repository,
+                           IRepository<Wallet> walletRepo,
+                           IMapper mapper)
         {
             this.repository = repository;
+            this.walletRepo = walletRepo;
             this.mapper = mapper;
         }
 
@@ -40,6 +44,15 @@ namespace AlifTech.Service.Services
 
             await repository.CreateAsync(newUser);
 
+            var wallet = new Wallet()
+            {
+                Balance = 0,
+                UserId = newUser.Id,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await walletRepo.CreateAsync(wallet);
+
             return mapper.Map<UserViewDto>(newUser);
         }
 
@@ -61,7 +74,7 @@ namespace AlifTech.Service.Services
                 throw new EWalletException(400, "This login already exist!");
 
             user = mapper.Map(dto, user);
-
+            user.Password = dto.Password.HashPassword();
             user.UpdatedAt = DateTime.UtcNow;
 
             user = await repository.UpdateAsync(user);
@@ -78,6 +91,8 @@ namespace AlifTech.Service.Services
 
             if (user is null)
                 throw new EWalletException(404, "User not found!");
+
+            await repository.DeleteAsync(u => u.Id == id);
         }
 
         /// <summary>
