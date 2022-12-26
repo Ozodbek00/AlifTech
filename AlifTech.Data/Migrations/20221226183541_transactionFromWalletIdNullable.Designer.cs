@@ -3,6 +3,7 @@ using System;
 using AlifTech.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AlifTech.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221226183541_transactionFromWalletIdNullable")]
+    partial class transactionFromWalletIdNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +44,7 @@ namespace AlifTech.Data.Migrations
                         .HasColumnType("character varying(100)");
 
                     b.Property<long?>("FromWalletId")
+                        .IsRequired()
                         .HasColumnType("bigint");
 
                     b.Property<long>("ToWalletId")
@@ -131,7 +135,9 @@ namespace AlifTech.Data.Migrations
                 {
                     b.HasOne("AlifTech.Domain.DBEntities.Wallet", "FromWallet")
                         .WithMany()
-                        .HasForeignKey("FromWalletId");
+                        .HasForeignKey("FromWalletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AlifTech.Domain.DBEntities.Wallet", "ToWallet")
                         .WithMany()

@@ -60,7 +60,7 @@ namespace AlifTech.Data.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Amount = table.Column<double>(type: "double precision", nullable: false),
-                    FromWalletId = table.Column<long>(type: "bigint", nullable: false),
+                    FromWalletId = table.Column<long>(type: "bigint", nullable: true),
                     ToWalletId = table.Column<long>(type: "bigint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)

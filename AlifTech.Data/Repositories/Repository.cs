@@ -44,9 +44,9 @@ namespace AlifTech.Data.Repositories
         /// <summary>
         /// Get all tsource.
         /// </summary>
-        public IQueryable<TSource> GetAll(string[]? includes = null)
+        public IQueryable<TSource> GetAll(Expression<Func<TSource, bool>> expression = null, string[]? includes = null)
         {
-            IQueryable<TSource> pagedResult = dbSet;
+            IQueryable<TSource> pagedResult = expression is null? dbSet : dbSet.Where(expression);
 
             if (includes is not null)
                 foreach (var include in includes)

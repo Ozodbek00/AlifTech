@@ -28,6 +28,6 @@ namespace AlifTech.Data.IRepositories
         /// <summary>
         /// Get all tsources from db.
         /// </summary>
-        IQueryable<TSource> GetAll(string[]? include = null);
+        IQueryable<TSource> GetAll(Expression<Func<TSource, bool>> expression = null, string[]? include = null);
     }
 }

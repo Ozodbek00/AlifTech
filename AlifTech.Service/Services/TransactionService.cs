@@ -53,11 +53,12 @@ namespace AlifTech.Service.Services
                 throw new EWalletException(400, $"Balance must not exceed: {amountLimit}");
 
             receiverWallet.Balance += dto.Amount;
-            
+            receiverWallet.UpdatedAt = DateTime.UtcNow;
+
             await walletRepo.UpdateAsync(receiverWallet);
 
             Transaction transaction = mapper.Map<Transaction>(dto);
-            
+            transaction.ToWalletId = receiverWallet.Id;
             transaction.CreatedAt = DateTime.UtcNow;
 
             transaction = await repository.CreateAsync(transaction);
@@ -114,9 +115,10 @@ namespace AlifTech.Service.Services
         /// <summary>
         /// Get all transactions.
         /// </summary>
-        public async Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize)
+        public async Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize, Expression<Func<Transaction, bool>> expression = null)
         {
-            var transactions = repository.GetAll(include: 
+            var transactions = repository.GetAll(expression: expression,
+                include: 
                 new[] { "ToWallet.User", "FromWallet.User" })
                 .Paginate(pageIndex, pageSize);
 

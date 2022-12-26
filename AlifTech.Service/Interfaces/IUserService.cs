@@ -1,4 +1,6 @@
-﻿using AlifTech.Service.DTOs.UserDTOs;
+﻿using AlifTech.Domain.DBEntities;
+using AlifTech.Service.DTOs.UserDTOs;
+using System.Linq.Expressions;
 
 namespace AlifTech.Service.Interfaces
 {
@@ -27,6 +29,6 @@ namespace AlifTech.Service.Interfaces
         /// <summary>
         /// Get all Users with pagination.
         /// </summary>
-        Task<UserViewDto[]> GetAllAsync(int pageIndex, int pageSize);
+        Task<UserViewDto[]> GetAllAsync(int pageIndex, int pageSize, Expression<Func<User, bool>> expression = null);
     }
 }

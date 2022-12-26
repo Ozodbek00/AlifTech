@@ -1,4 +1,6 @@
-﻿using AlifTech.Service.DTOs.Transactions;
+﻿using AlifTech.Domain.DBEntities;
+using AlifTech.Service.DTOs.Transactions;
+using System.Linq.Expressions;
 
 namespace AlifTech.Service.Interfaces
 {
@@ -17,6 +19,6 @@ namespace AlifTech.Service.Interfaces
         /// <summary>
         /// Gets All Transactions.
         /// </summary>
-        Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize);
+        Task<TransactionViewDto[]> GetAllAsync(int pageIndex, int pageSize, Expression<Func<Transaction, bool>> expression = null);
     }
 }

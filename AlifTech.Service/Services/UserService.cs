@@ -7,6 +7,7 @@ using AlifTech.Service.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AlifTech.Service.Services
 {
@@ -113,10 +114,10 @@ namespace AlifTech.Service.Services
         /// <summary>
         /// Gets all User by mapping with pagination.
         /// </summary>
-        public async Task<UserViewDto[]> GetAllAsync(int pageIndex, int pageSize)
+        public async Task<UserViewDto[]> GetAllAsync(int pageIndex, int pageSize, Expression<Func<User, bool>> expression = null)
         {
             IQueryable<UserViewDto> users = repository
-                .GetAll()
+                .GetAll(expression)
                 .Paginate(pageIndex, pageSize)
                 .ProjectTo<UserViewDto>(mapper.ConfigurationProvider);
 

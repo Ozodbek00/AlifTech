@@ -12,19 +12,28 @@ namespace AlifTech.Api.Controllers
         {
             this.userService = userService;
         }
-
+        
+        /// <summary>
+        /// Create User.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> CreateAsync(UserForCreationDto dto)
         {
             return Ok(await userService.AddAsync(dto));
         }
 
+        /// <summary>
+        /// Update User.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(long id, UserForCreationDto dto)
         {
             return Ok(await userService.UpdateAsync(id, dto));
         }
 
+        /// <summary>
+        /// Delete User.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(long id)
         {
@@ -33,12 +42,19 @@ namespace AlifTech.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Get User by Id.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(long id)
         {
             return Ok(await userService.GetByIdAsync(id));
         }
 
+        /// <summary>
+        /// Get All Users with pagination
+        /// Default pageIndez is 1, pageSize is 20.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(int pageIndex, int pageSize)
         {
