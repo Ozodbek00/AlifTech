@@ -1,6 +1,5 @@
 ﻿using AlifTech.Data.DbContexts;
 using AlifTech.Data.IRepositories;
-using AlifTech.Data.PaginationExtensions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

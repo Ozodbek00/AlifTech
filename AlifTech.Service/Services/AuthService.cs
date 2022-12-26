@@ -37,6 +37,11 @@ namespace AlifTech.Service.Services
             // Else we generate JSON Web Token
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
+            
+            // TO DO
+            //var sha1 = System.Security.Cryptography.SHA1.Create();
+            //var hash = sha1.ComputeHash(tokenKey);
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

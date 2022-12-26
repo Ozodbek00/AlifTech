@@ -7,11 +7,11 @@ namespace AlifTech.Service.Extensions
     {
         public static string HashPassword(this string password)
         {
-            // SHA256 is disposable by inheritance. 
-            using var sha256 = SHA256.Create();
+            // SHA1 is disposable by inheritance. 
+            using var sha1 = SHA1.Create();
 
             // Send a sample text to hash.  
-            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            var hashedBytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             // Get the hashed string.  
             var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();

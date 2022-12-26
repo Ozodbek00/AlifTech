@@ -4,7 +4,6 @@ using AlifTech.Service.DTOs.UserDTOs;
 using AlifTech.Service.Exceptions;
 using AlifTech.Service.Extensions;
 using AlifTech.Service.Interfaces;
-using AlifTech.Service.PaginationExtensions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;

@@ -1,4 +1,4 @@
-﻿namespace AlifTech.Service.PaginationExtensions
+﻿namespace AlifTech.Service.Extensions
 {
     internal static class Pagination
     {

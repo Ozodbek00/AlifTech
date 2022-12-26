@@ -15,7 +15,7 @@
         /// <summary>
         /// Gets && sets Amount of money.
         /// </summary>
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Gets && sets Date of Transaction.

@@ -19,7 +19,7 @@ namespace AlifTech.Api.Extensions
             services.AddScoped<IRepository<Transaction>, Repository<Transaction>>();
 
             // add services.
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
             //services.AddScoped<ITransactionService, TransactionService>();
         }
 
