@@ -27,6 +27,7 @@ namespace AlifTech.Service.Services
         /// </summary>
         public async Task<string> GenerateTokenAsync(string login, string password)
         {
+            // Check for validation
             var user = await userRepository.GetAsync(x =>
                 x.Login == login && x.Password == password.HashPassword());
 
@@ -38,10 +39,6 @@ namespace AlifTech.Service.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
             
-            // TO DO
-            //var sha1 = System.Security.Cryptography.SHA1.Create();
-            //var hash = sha1.ComputeHash(tokenKey);
-
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

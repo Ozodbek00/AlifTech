@@ -25,6 +25,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(s =>
 {
+    s.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Transaction API",
+        Version = "v1",
+        Description = "Transaction API Services.",
+        Contact = new OpenApiContact
+        {
+            Name = "Something"
+        },
+    });
     s.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
     s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -65,9 +75,10 @@ app.UseMiddleware<EWalletMiddleware>();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.UseAuthentication();
 
 app.MapControllers();
 
