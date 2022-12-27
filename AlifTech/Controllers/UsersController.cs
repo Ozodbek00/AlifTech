@@ -1,10 +1,11 @@
 ﻿using AlifTech.Service.DTOs.UserDTOs;
 using AlifTech.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlifTech.Api.Controllers
 {
-    [ApiController, Route("[controller]")]
+    [ApiController, Route("api/users")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService userService;
@@ -25,7 +26,7 @@ namespace AlifTech.Api.Controllers
         /// <summary>
         /// Update User.
         /// </summary>
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task<IActionResult> UpdateAsync(long id, UserForCreationDto dto)
         {
             return Ok(await userService.UpdateAsync(id, dto));
@@ -34,7 +35,7 @@ namespace AlifTech.Api.Controllers
         /// <summary>
         /// Delete User.
         /// </summary>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<IActionResult> DeleteAsync(long id)
         {
             await userService.DeleteAsync(id);

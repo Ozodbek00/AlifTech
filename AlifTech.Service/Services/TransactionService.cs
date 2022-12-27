@@ -101,12 +101,13 @@ namespace AlifTech.Service.Services
             await walletRepo.UpdateAsync(receiverWallet);
 
             Transaction transaction = mapper.Map<Transaction>(dto);
-
+            transaction.FromWalletId = dto.SenderWalletId;
+            transaction.ToWalletId = dto.ReceiverWalletId;
             transaction.CreatedAt = DateTime.UtcNow;
 
-            transaction = await repository.CreateAsync(transaction);
+            var newTransaction = await repository.CreateAsync(transaction);
 
-            var view = mapper.Map<TransactionViewDto>(transaction);
+            var view = mapper.Map<TransactionViewDto>(newTransaction);
             view.From = string.Concat(user.FirstName, " ", user.LastName);
 
             return view;

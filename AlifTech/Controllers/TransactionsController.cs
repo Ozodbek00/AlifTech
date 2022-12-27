@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AlifTech.Api.Controllers
 {
-    [ApiController, Route("[controller]")]
+    [ApiController, Route("api/transactions")]
     public class TransactionsController : ControllerBase
     {
         private readonly ITransactionService transactionService;
@@ -84,7 +84,7 @@ namespace AlifTech.Api.Controllers
         /// <summary>
         /// Create Person to person transaction.
         /// </summary>
-        [HttpPost("p2p"), Authorize]
+        [HttpPost("person-to-person-transaction"), Authorize]
         public async Task<IActionResult> AddTransactionAsync(TransactionForCreationDto dto)
         {
             return Ok(await transactionService.AddP2pAsync(dto));

@@ -11,6 +11,9 @@ namespace AlifTech.Api.Extensions
 {
     public static class ServiceExtension
     {
+        /// <summary>
+        /// Add Services and Repositories to DI.
+        /// </summary>
         public static void AddCustomServices(this IServiceCollection services)
         {
             // add repositories.
@@ -19,11 +22,13 @@ namespace AlifTech.Api.Extensions
             services.AddScoped<IRepository<Transaction>, Repository<Transaction>>();
 
             // add services.
-            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITransactionService, TransactionService>();
         }
 
+        /// <summary>
+        /// Add JWTService | Registr.
+        /// </summary>
         public static void AddJwtService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(x =>

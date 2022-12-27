@@ -1,6 +1,6 @@
 ﻿namespace AlifTech.Service.Exceptions
 {
-    internal sealed class EWalletException : Exception
+    public sealed class EWalletException : Exception
     {
         /// <summary>
         /// Response code.
